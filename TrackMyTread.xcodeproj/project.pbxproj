@@ -8,11 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		4055C8321DF5055100C7A2F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4055C8311DF5055100C7A2F2 /* AppDelegate.swift */; };
-		4055C8341DF5055100C7A2F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4055C8331DF5055100C7A2F2 /* ViewController.swift */; };
 		4055C8371DF5055100C7A2F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4055C8351DF5055100C7A2F2 /* Main.storyboard */; };
 		4055C8391DF5055100C7A2F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4055C8381DF5055100C7A2F2 /* Assets.xcassets */; };
 		4055C83C1DF5055100C7A2F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4055C83A1DF5055100C7A2F2 /* LaunchScreen.storyboard */; };
 		4055C8471DF5055100C7A2F2 /* TrackMyTreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4055C8461DF5055100C7A2F2 /* TrackMyTreadTests.swift */; };
+		40B70B1A1DFA4C3700DD0DA3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B70B191DFA4C3700DD0DA3 /* MapViewController.swift */; };
+		40B70B1C1DFA4CF300DD0DA3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B70B1B1DFA4CF300DD0DA3 /* MainViewController.swift */; };
+		40B70B1F1DFC5F6D00DD0DA3 /* UIColor+CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B70B1E1DFC5F6D00DD0DA3 /* UIColor+CustomColor.swift */; };
+		40B70B221DFCFCF600DD0DA3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40B70B211DFCFCF600DD0DA3 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +31,6 @@
 /* Begin PBXFileReference section */
 		4055C82E1DF5055100C7A2F2 /* TrackMyTread.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackMyTread.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4055C8311DF5055100C7A2F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4055C8331DF5055100C7A2F2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4055C8361DF5055100C7A2F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4055C8381DF5055100C7A2F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4055C83B1DF5055100C7A2F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +38,10 @@
 		4055C8421DF5055100C7A2F2 /* TrackMyTreadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrackMyTreadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4055C8461DF5055100C7A2F2 /* TrackMyTreadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackMyTreadTests.swift; sourceTree = "<group>"; };
 		4055C8481DF5055100C7A2F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40B70B191DFA4C3700DD0DA3 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		40B70B1B1DFA4CF300DD0DA3 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		40B70B1E1DFC5F6D00DD0DA3 /* UIColor+CustomColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+CustomColor.swift"; sourceTree = "<group>"; };
+		40B70B211DFCFCF600DD0DA3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40B70B221DFCFCF600DD0DA3 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,8 +67,10 @@
 			isa = PBXGroup;
 			children = (
 				4055C8301DF5055100C7A2F2 /* TrackMyTread */,
+				40B70B1D1DFC5EEA00DD0DA3 /* Extensions */,
 				4055C8451DF5055100C7A2F2 /* TrackMyTreadTests */,
 				4055C82F1DF5055100C7A2F2 /* Products */,
+				40B70B201DFCFCF600DD0DA3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,7 +87,8 @@
 			isa = PBXGroup;
 			children = (
 				4055C8311DF5055100C7A2F2 /* AppDelegate.swift */,
-				4055C8331DF5055100C7A2F2 /* ViewController.swift */,
+				40B70B1B1DFA4CF300DD0DA3 /* MainViewController.swift */,
+				40B70B191DFA4C3700DD0DA3 /* MapViewController.swift */,
 				4055C8351DF5055100C7A2F2 /* Main.storyboard */,
 				4055C8381DF5055100C7A2F2 /* Assets.xcassets */,
 				4055C83A1DF5055100C7A2F2 /* LaunchScreen.storyboard */,
@@ -94,6 +104,22 @@
 				4055C8481DF5055100C7A2F2 /* Info.plist */,
 			);
 			path = TrackMyTreadTests;
+			sourceTree = "<group>";
+		};
+		40B70B1D1DFC5EEA00DD0DA3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				40B70B1E1DFC5F6D00DD0DA3 /* UIColor+CustomColor.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		40B70B201DFCFCF600DD0DA3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				40B70B211DFCFCF600DD0DA3 /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,7 +227,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4055C8341DF5055100C7A2F2 /* ViewController.swift in Sources */,
+				40B70B1C1DFA4CF300DD0DA3 /* MainViewController.swift in Sources */,
+				40B70B1A1DFA4C3700DD0DA3 /* MapViewController.swift in Sources */,
+				40B70B1F1DFC5F6D00DD0DA3 /* UIColor+CustomColor.swift in Sources */,
 				4055C8321DF5055100C7A2F2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,6 +438,7 @@
 				4055C84D1DF5055100C7A2F2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4055C84E1DF5055100C7A2F2 /* Build configuration list for PBXNativeTarget "TrackMyTreadTests" */ = {
 			isa = XCConfigurationList;
@@ -418,6 +447,7 @@
 				4055C8501DF5055100C7A2F2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
