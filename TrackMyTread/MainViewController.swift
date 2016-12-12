@@ -29,11 +29,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     var totalElapsedTime = TimeInterval()
     
     var locationManager: CLLocationManager!
-    var locationArray: [CLLocationCoordinate2D] = []
     var lastLocation: CLLocation!
     var storedDistance: CLLocationDistance = 0.0
-    var totalDistance: CLLocationDistance = 0.0
     var distanceFormatter = MKDistanceFormatter()
+    var initLocation: Bool = false
     
     //Actions
     @IBAction func btnShoeClick(_ sender: AnyObject) {
@@ -78,7 +77,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                 locationManager.requestWhenInUseAuthorization()
             }
             
-            lastLocation = locationManager.location
+            initLocation = true
             locationManager.startUpdatingLocation()
         }
     }
@@ -91,7 +90,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.stopUpdatingLocation()
         }
         
-        storedDistance = totalDistance
     }
     
     @IBAction func btnResetClick(_ sender: AnyObject) {
@@ -100,6 +98,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         
         storedDistance = 0.0
         setDistanceText(Distance: storedDistance)
+        
+        SharedDataManager.sharedInstance.sharedlocationArray.removeAll()
     }
     
     override func viewDidLoad() {
@@ -149,12 +149,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         let strSeconds = String(format: "%02d", seconds)
         let strFraction = String(format: "%02d", fraction)
         
-        //concatenate minuets, seconds and milliseconds as assign it to the UILabel
+        //concatenate minutes, seconds, and milliseconds
+        
         txtTime.text = "\(strMinutes):\(strSeconds):\(strFraction)"
-    }
-    
-    func setDistanceText(Distance : CLLocationDistance) {
-        txtDistance.text = distanceFormatter.string(fromDistance: Distance)
+        SharedDataManager.sharedInstance.sharedElapsedTime = "\(strMinutes):\(strSeconds):00"
     }
 
     override func didReceiveMemoryWarning() {
@@ -164,10 +162,23 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location:CLLocation = locations[locations.endIndex-1] as CLLocation
+        if initLocation {
+            lastLocation = location
+            initLocation = false
+        }
         let distance: CLLocationDistance = location.distance(from: lastLocation)
-        totalDistance = distance + storedDistance
+        storedDistance += distance
         
-        setDistanceText(Distance: totalDistance)
+        setDistanceText(Distance: storedDistance)
+        SharedDataManager.sharedInstance.sharedlocationArray.append(location.coordinate)
+        
+        lastLocation = location
+    }
+    
+    func setDistanceText(Distance : CLLocationDistance) {
+        let distance = distanceFormatter.string(fromDistance: Distance)
+        txtDistance.text = distance
+        SharedDataManager.sharedInstance.sharedDistance = distance
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -175,14 +186,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         errorBox.isHidden = false
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
 
 }

@@ -16,6 +16,7 @@
 		40B70B1C1DFA4CF300DD0DA3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B70B1B1DFA4CF300DD0DA3 /* MainViewController.swift */; };
 		40B70B1F1DFC5F6D00DD0DA3 /* UIColor+CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B70B1E1DFC5F6D00DD0DA3 /* UIColor+CustomColor.swift */; };
 		40B70B221DFCFCF600DD0DA3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40B70B211DFCFCF600DD0DA3 /* MapKit.framework */; };
+		40B70B241DFDF81F00DD0DA3 /* SharedDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B70B231DFDF81F00DD0DA3 /* SharedDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		40B70B1B1DFA4CF300DD0DA3 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		40B70B1E1DFC5F6D00DD0DA3 /* UIColor+CustomColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+CustomColor.swift"; sourceTree = "<group>"; };
 		40B70B211DFCFCF600DD0DA3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		40B70B231DFDF81F00DD0DA3 /* SharedDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				4055C8381DF5055100C7A2F2 /* Assets.xcassets */,
 				4055C83A1DF5055100C7A2F2 /* LaunchScreen.storyboard */,
 				4055C83D1DF5055100C7A2F2 /* Info.plist */,
+				40B70B231DFDF81F00DD0DA3 /* SharedDataManager.swift */,
 			);
 			path = TrackMyTread;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40B70B241DFDF81F00DD0DA3 /* SharedDataManager.swift in Sources */,
 				40B70B1C1DFA4CF300DD0DA3 /* MainViewController.swift in Sources */,
 				40B70B1A1DFA4C3700DD0DA3 /* MapViewController.swift in Sources */,
 				40B70B1F1DFC5F6D00DD0DA3 /* UIColor+CustomColor.swift in Sources */,
