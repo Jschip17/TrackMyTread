@@ -18,9 +18,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var txtTime: UITextField!
     @IBOutlet weak var txtDistance: UITextField!
     @IBOutlet weak var errorBox: UILabel!
+    @IBOutlet weak var txtSpeed: UITextField!
     
     //Local
-    let clrLime = UIColor(red: 128, green: 255, blue: 0)
+    let clrYellow = UIColor(red: 255, green: 230, blue: 0)
     let clrSilver = UIColor(red: 204, green: 204, blue: 204)
     var distanceFilter = 10.0
     var timer = Timer()
@@ -33,10 +34,11 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     var storedDistance: CLLocationDistance = 0.0
     var distanceFormatter = MKDistanceFormatter()
     var initLocation: Bool = false
+    var imperialUnits: Bool = false
     
     //Actions
     @IBAction func btnShoeClick(_ sender: AnyObject) {
-        btnShoe.backgroundColor = clrLime
+        btnShoe.backgroundColor = clrYellow
         btnTire.backgroundColor = clrSilver
         distanceFilter = 10.0
         
@@ -51,7 +53,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBAction func btnTireClick(_ sender: AnyObject) {
         btnShoe.backgroundColor = clrSilver
-        btnTire.backgroundColor = clrLime
+        btnTire.backgroundColor = clrYellow
         distanceFilter = 20.0
         
         if locationManager != nil {
@@ -101,6 +103,16 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         
         SharedDataManager.sharedInstance.sharedlocationArray.removeAll()
     }
+    @IBAction func btnUnitsClick(_ sender: AnyObject) {
+        if imperialUnits {
+            distanceFormatter.units = .metric
+            imperialUnits = false
+        }
+        else {
+            distanceFormatter.units = .imperial
+            imperialUnits = true
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,8 +122,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         
         distanceFormatter.units = .imperial
         distanceFormatter.unitStyle = .abbreviated
+        imperialUnits = true
         
         setDistanceText(Distance: storedDistance)
+        setSpeedText(Speed: 0.0)
         
         if (CLLocationManager.locationServicesEnabled() == false) {
             errorBox.text = "Location Disabled"
@@ -171,14 +185,26 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         
         setDistanceText(Distance: storedDistance)
         SharedDataManager.sharedInstance.sharedlocationArray.append(location.coordinate)
-        
+        setSpeedText(Speed: location.speed)
         lastLocation = location
+        
     }
     
     func setDistanceText(Distance : CLLocationDistance) {
         let distance = distanceFormatter.string(fromDistance: Distance)
         txtDistance.text = distance
         SharedDataManager.sharedInstance.sharedDistance = distance
+    }
+    
+    func setSpeedText(Speed : CLLocationSpeed) {
+        if imperialUnits {
+            let speed = Double(Speed * 2.23694).roundTo(places: 2)
+            txtSpeed.text = "\(speed) mph"
+        }
+        else {
+            let speed = Double(Speed * 3.6).roundTo(places: 2)
+            txtSpeed.text = "\(speed) km/h"
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
