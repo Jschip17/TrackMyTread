@@ -101,6 +101,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         storedDistance = 0.0
         setDistanceText(Distance: storedDistance)
         
+        setSpeedText(Speed: 0.0)
+        
         SharedDataManager.sharedInstance.sharedlocationArray.removeAll()
     }
     @IBAction func btnUnitsClick(_ sender: AnyObject) {
